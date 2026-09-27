@@ -61,6 +61,8 @@ def issue_for_verified_source_token(
         raise ValueError("source token missing integer validity claims")
     if claims["iat"] > issued_at + 60:
         raise ValueError("source token issued in the future")
+    if claims["exp"] - issued_at < 120:
+        raise ValueError("source token expires before assertion")
     subject = claims.get("sub")
     if not isinstance(subject, str) or not subject:
         raise ValueError("source token missing subject")
@@ -92,9 +94,12 @@ def verify_destination_assertion(
     )
     if set(claims) != ASSERTION_FIELDS:
         raise ValueError("unexpected assertion claims")
+    if claims["aud"] != DESTINATION_AUDIENCE:
+        raise ValueError("assertion must have exactly one destination audience")
     if type(claims["age_over_18"]) is not bool:
         raise ValueError("age predicate is not boolean")
-    if not isinstance(claims["sub"], str) or len(claims["sub"]) != 64:
+    if (not isinstance(claims["sub"], str) or len(claims["sub"]) != 64
+            or any(character not in "0123456789abcdef" for character in claims["sub"])):
         raise ValueError("invalid pseudonym")
     if type(claims["iat"]) is not int or type(claims["exp"]) is not int:
         raise ValueError("invalid validity claims")

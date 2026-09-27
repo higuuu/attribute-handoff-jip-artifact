@@ -39,7 +39,7 @@ to an author-controlled private repository; this package supplies the source
 files needed to inspect it, not the private Git history.
 The later local age-derivation protocol was fixed in commit
 `f41612334945e8529e6bd7f8aa7241d85de38891`. Its result has SHA-256
-`617bc5bf8debda51e1a95069dd19abc7eae22b8de4dbb1110f6d5362c8cc949b`
+`cc8257bd7f64bf071505dfbe3ccd2c307a95fe5a0ae41e0a997c67a4cabb8876`
 and records hashes of the exact source/fixture files. This supplement is not
 part of the historical two-host trial.
 

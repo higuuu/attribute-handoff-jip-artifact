@@ -18,9 +18,12 @@ revision of the 16-case audit or 90-event two-host follow-up.
   ES256 signature, destination audience, issuer, expiry, and schema.
 - Seven controls passed: February-29 boundary before/after March 1, invalid,
   missing, and future DOB rejection, tampered source signature rejection,
-  and source-audience mismatch rejection. Unit test suite: 11 passed.
+  and source-audience mismatch rejection. The later code self-review also
+  added exact destination-audience and source/assertion lifetime checks;
+  unit test suite: 13 passed for the local module, 38 for the OSS-handoff
+  suite. The corrected code was used in the final actual-Keycloak rerun.
 - Retained `output/results/live-age-supplement.json` SHA-256:
-  `617bc5bf8debda51e1a95069dd19abc7eae22b8de4dbb1110f6d5362c8cc949b`.
+  `cc8257bd7f64bf071505dfbe3ccd2c307a95fe5a0ae41e0a997c67a4cabb8876`.
   It includes per-file source hashes and passed a scan for JWT-like material,
   PEM keys, test passwords, raw DOB, and the `birth_date` field name.
 
@@ -36,7 +39,7 @@ The adapter and verifier ran on the same physical host; stdin was the
 process boundary. It did not test geographic separation, network interception,
 independent operators, actual-age identity proofing, stale source-attribute
 updates, a Keycloak plug-in, request authorization policy, all-path bypass,
-credential status/revocation, or performance. The test injects reference
+credential status/revocation, nonce-based replay protection, or performance. The test injects reference
 dates to check the calendar boundary; it does not simulate the passage of
 real time. The old O* path remains a stored flag, and the two studies must not
 be pooled.

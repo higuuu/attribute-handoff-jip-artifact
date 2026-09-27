@@ -68,3 +68,43 @@ def test_source_derives_and_destination_verifies_without_dob() -> None:
         wrong_key = public_jwk(ec.generate_private_key(ec.SECP256R1()))
         wrong_key["kid"] = "live-age-local"
         verify_destination_assertion(assertion, wrong_key, now=1100)
+
+
+def test_near_expiry_source_token_cannot_issue_longer_lived_assertion() -> None:
+    source_key = ec.generate_private_key(ec.SECP256R1())
+    source_jwk = public_jwk(source_key)
+    source_jwk["kid"] = "source-key"
+    issuer = "http://127.0.0.1:18880/realms/live-age"
+    source_token = sign_es256(
+        {"alg": "ES256", "kid": "source-key"},
+        {
+            "iss": issuer, "aud": SOURCE_AUDIENCE, "sub": "synthetic-user",
+            "birth_date": "2008-09-27", "iat": 1000, "exp": 1150,
+        },
+        source_key,
+    )
+    with pytest.raises(ValueError, match="expires before assertion"):
+        issue_for_verified_source_token(
+            source_token, {"keys": [source_jwk]}, source_issuer=issuer,
+            signing_key=ec.generate_private_key(ec.SECP256R1()),
+            subject_salt=os.urandom(32), as_of=date(2026, 9, 27),
+            issued_at=1100,
+        )
+
+
+def test_destination_rejects_extra_audience() -> None:
+    key = ec.generate_private_key(ec.SECP256R1())
+    jwk = public_jwk(key)
+    jwk["kid"] = "live-age-local"
+    assertion = sign_es256(
+        {"alg": "ES256", "kid": "live-age-local"},
+        {
+            "iss": "urn:synthetic:source-age-adapter",
+            "aud": [DESTINATION_AUDIENCE, "other-service"],
+            "sub": "a" * 64, "age_over_18": True,
+            "iat": 1100, "exp": 1220,
+        },
+        key,
+    )
+    with pytest.raises(ValueError, match="exactly one"):
+        verify_destination_assertion(assertion, jwk, now=1100)
