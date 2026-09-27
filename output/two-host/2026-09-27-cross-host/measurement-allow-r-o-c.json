@@ -1,0 +1,912 @@
+{
+  "all_expectations_passed": true,
+  "allowed_routes": [
+    "O",
+    "C",
+    "R"
+  ],
+  "claim_boundary": {
+    "byte_count_is_not_a_privacy_metric": true,
+    "geographic_or_legal_separation": false,
+    "host_separation_is_fingerprint_based_not_attested": true,
+    "independent_reproduction": false,
+    "latency_is_descriptive": true,
+    "separate_physical_hosts": true
+  },
+  "direct_source_probe": {
+    "elapsed_ms": 86.788,
+    "reachable": false,
+    "status": null,
+    "target_host_sha256": "a70012c94bace0ea5291c516c2d70e648fee1cc72a4636724b337511606f3e78",
+    "target_matches_pep": true,
+    "target_port": 18080,
+    "transport_error_class": "ConnectionRefusedError"
+  },
+  "enforcement_mode": "enforce",
+  "environment": {
+    "client_host_sha256": "b6f92baf8657cecf7c0ec2e64a4373db3ac92deee501991609b0eae354275c95",
+    "host_separation_observed": true,
+    "machine": "arm64",
+    "python": "3.10.5",
+    "role": "Region B lightweight verifier and measurement client",
+    "source_host_sha256": "d850f424bcff1576ecc5f62562c3d1a293d054cd285be21b6bfe5e1ccd2f79cf",
+    "synthetic_data_only": true,
+    "system": "Darwin"
+  },
+  "experiment": "jip-two-physical-host-remediation",
+  "parameters": {
+    "air_runner_sha256": "1b304ff774894edbc4548e27e95c1bf2e72d0612bf7d438692807f9785a7074b",
+    "c_bundle_sha256": "9e093ce4fd6e64eeb86eceb025d21c025d4c22cd8868d3c423e001e690a9a5da",
+    "c_credential_expires_at": 1790445917,
+    "c_credential_issued_at": 1790438717,
+    "c_credential_lifetime_seconds": 7200,
+    "c_credential_seconds_remaining_at_start": 6398,
+    "implementation_commit": "817838415303a0e4bcf6036f1059218edcade659",
+    "repetitions": 10,
+    "tls_ca_bundle_sha256": "9cc2a774b5198dcff14d9be1e66091f538975d867ce029a96bce15a55dfd730f",
+    "tokens_or_credentials_persisted_in_result": false
+  },
+  "phase": "measurement-allow-r-o-c",
+  "policy_model_id_sha256": "bc304ac4740b334560e0f891ba534e293839532dbce105100152c372f776e9a7",
+  "records": [
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 305.682,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 1,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 334.035,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 1,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 350.588,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 1,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 299.781,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 2,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 693.451,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 2,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 103.983,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 2,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 203.083,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 3,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 194.378,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 3,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 409.378,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 3,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 320.643,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 4,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 470.817,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 4,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 297.972,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 4,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 346.505,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 5,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 249.242,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 5,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 254.854,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 5,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 311.087,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 6,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 341.188,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 6,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 382.909,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 6,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 397.644,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 7,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 318.107,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 7,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 177.319,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 7,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 436.853,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 8,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 184.221,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 8,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 236.422,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 8,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 545.631,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 9,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 242.028,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 9,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 66.275,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 9,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": true,
+      "case": "R_CURRENT",
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 240.713,
+      "evidence_bytes": 877,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": false,
+      "reason": null,
+      "repetition": 10,
+      "request_bytes": 184,
+      "response_bytes": 1151,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "birth_date_present": false,
+      "case": "O_CURRENT",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 335.631,
+      "evidence_bytes": 873,
+      "expected": true,
+      "issuer_verified": true,
+      "predicate_present": true,
+      "reason": null,
+      "repetition": 10,
+      "request_bytes": 185,
+      "response_bytes": 1148,
+      "route": "O*",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "O_STALE_MODEL",
+      "disclosure_fields": [],
+      "elapsed_ms": 257.029,
+      "evidence_bytes": 0,
+      "expected": true,
+      "issuer_verified": false,
+      "reason": "STALE_POLICY_MODEL",
+      "repetition": 10,
+      "request_bytes": 191,
+      "response_bytes": 275,
+      "route": "O*",
+      "signature_verified": false,
+      "status": 409,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 28.97,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 1,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 0.653,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 2,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 0.551,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 3,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 0.529,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 4,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 0.464,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 5,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 0.436,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 6,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 0.434,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 7,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 0.43,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 8,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 0.431,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 9,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "case": "C_OFFLINE",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 0.432,
+      "evidence_bytes": 2716,
+      "expected": true,
+      "issuer_verified": true,
+      "reason": null,
+      "repetition": 10,
+      "request_bytes": 0,
+      "response_bytes": 0,
+      "route": "C",
+      "signature_verified": true,
+      "source_requests_required": 0,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    }
+  ],
+  "schema_version": 1,
+  "summary": {
+    "C_OFFLINE": {
+      "count": 10,
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "evidence_bytes_p50": 2716,
+      "expectations_passed": true,
+      "latency_ms": {
+        "p50": 0.45,
+        "p95": 16.227
+      },
+      "request_bytes_p50": 0,
+      "response_bytes_p50": 0,
+      "status_counts": {
+        "200": 10
+      }
+    },
+    "O_CURRENT": {
+      "count": 10,
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "evidence_bytes_p50": 873,
+      "expectations_passed": true,
+      "latency_ms": {
+        "p50": 326.071,
+        "p95": 593.266
+      },
+      "request_bytes_p50": 185,
+      "response_bytes_p50": 1148,
+      "status_counts": {
+        "200": 10
+      }
+    },
+    "O_STALE_MODEL": {
+      "count": 10,
+      "disclosure_fields": [],
+      "evidence_bytes_p50": 0,
+      "expectations_passed": true,
+      "latency_ms": {
+        "p50": 255.942,
+        "p95": 397.467
+      },
+      "request_bytes_p50": 191,
+      "response_bytes_p50": 275,
+      "status_counts": {
+        "409": 10
+      }
+    },
+    "R_CURRENT": {
+      "count": 10,
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "evidence_bytes_p50": 877,
+      "expectations_passed": true,
+      "latency_ms": {
+        "p50": 315.865,
+        "p95": 496.681
+      },
+      "request_bytes_p50": 184,
+      "response_bytes_p50": 1151,
+      "status_counts": {
+        "200": 10
+      }
+    }
+  }
+}

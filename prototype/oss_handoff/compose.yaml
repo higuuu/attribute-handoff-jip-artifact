@@ -1,0 +1,76 @@
+name: dsfia-iwsec-oss
+
+services:
+  region-a:
+    image: oidc-load-lab-keycloak:26.7.3
+    command:
+      - start-dev
+      - --features=oid4vc-vci,oid4vc-vci-preauth-code,oid4vc-vci-rest-credential-offer
+      - --import-realm
+      - --hostname=http://region-a:8080
+      - --http-port=8080
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: lab-admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: local-admin-only
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "false"
+      JAVA_OPTS_KC_HEAP: -Xms384m -Xmx1024m
+    volumes:
+      - ./keycloak/region-a-realm.json:/opt/keycloak/data/import/region-a-realm.json:ro
+    mem_limit: 1536m
+    cpus: 1.5
+
+  region-b:
+    image: oidc-load-lab-keycloak:26.7.3
+    command:
+      - start-dev
+      - --import-realm
+      - --hostname=http://region-b:8080
+      - --http-port=8080
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: lab-admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: local-admin-only
+      KC_HEALTH_ENABLED: "true"
+      KC_METRICS_ENABLED: "false"
+      JAVA_OPTS_KC_HEAP: -Xms384m -Xmx1024m
+    volumes:
+      - ./keycloak/region-b-realm.json:/opt/keycloak/data/import/region-b-realm.json:ro
+    depends_on:
+      - region-a
+    mem_limit: 1536m
+    cpus: 1.5
+
+  policy:
+    image: openfga/openfga:v1.18.1
+    command:
+      - run
+      - --playground-enabled=false
+    mem_limit: 256m
+    cpus: 0.5
+
+  runner:
+    image: dsfia-iwsec-pilot:local
+    command:
+      - sleep
+      - infinity
+    working_dir: /workspace
+    environment:
+      PYTHONPATH: /workspace
+      PYTHONDONTWRITEBYTECODE: "1"
+    volumes:
+      - ../..:/workspace
+      - ./.runtime:/runtime
+    depends_on:
+      - region-a
+      - region-b
+      - policy
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    mem_limit: 512m
+    cpus: 0.5
+    pids_limit: 128

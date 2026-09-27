@@ -1,0 +1,310 @@
+{
+  "components": {
+    "keycloak": {
+      "configured_version": "26.7.3",
+      "image_id": "sha256:9ae8d484456bb711fe05e8669bab61b4045c764c6ddbd1c4d646d6ff11d6db6f",
+      "instances": 2,
+      "oid4vci_status": "experimental"
+    },
+    "openfga": {
+      "configured_version": "1.18.1",
+      "image_id": "sha256:4745c0c09f4f2f64f89b64e97b8a62163d31fc4767713321bd11075a002ae8aa"
+    },
+    "runner": {
+      "contains_raw_tokens_in_published_result": false,
+      "image_id": "sha256:06e035e8a631ef854ff0f2733411230d3340439d4fcaf9420f58b11c660a826c"
+    },
+    "verifier": {
+      "checks": [
+        "issuer_jws",
+        "disclosure_digest",
+        "expiry",
+        "cnf_key_binding",
+        "kb_jwt_audience",
+        "nonce"
+      ],
+      "crypto_library": "cryptography",
+      "full_openid4vp_implementation": false,
+      "implementation": "minimal Python standards-profile client"
+    }
+  },
+  "configuration": {
+    "credential_metadata_sha256": "2f503ce2ffe6c2cc9f4fef163adc1f0c539e2cd719b28bb2ceb0fe6b66ccb6a6",
+    "policy_cache_sha256": "6134c28dd10c63ad4fd00abcfe6981a14778cb5297f78bedb95ce189dfc911fd",
+    "region_a_realm_sha256": "0dc630eb0522d06feea5c33d3c97fe810a060e9718d64c35f979a7ce9f2c0cd6",
+    "region_b_realm_sha256": "402f385afe500112bb2f8985629e5b0269633593dff6f4eb402025408512657d"
+  },
+  "counts": {
+    "failed_or_unsupported": 3,
+    "observations": 16,
+    "passed": 13
+  },
+  "decision": "D2_MINIMAL_MISSING_HANDOFF_LAYER",
+  "environment": {
+    "docker_architecture": "aarch64",
+    "docker_cpus": 4,
+    "docker_memory_bytes": 12001992704,
+    "host_class": "single Mac mini",
+    "network_scope": "local Docker bridge only",
+    "synthetic_data_only": true
+  },
+  "experiment": "iwsec-oss-feasibility-20260920",
+  "invariants": {
+    "I1_separate_ids": true,
+    "I2_destination_binding": true,
+    "I3_route_disclosure": true,
+    "I4_source_availability": true,
+    "I5_freshness_and_status": false,
+    "I6_no_unsafe_fallback": false,
+    "I7_replay_and_request_binding": true,
+    "I8_correlation_inventory": true
+  },
+  "observations": [
+    {
+      "id": "K1_PAIRWISE_SUBJECTS",
+      "invariant": "I1",
+      "observed": {
+        "derived_sub_hash": "bb9b2b549e1588047cd115bd9808aa7bea20696b339f08ea3b98a4d57ab1bf92",
+        "raw_sub_hash": "af89de85e3938c25af721bb7c42d4968b4ee64b16abcc7e9fabb3b08763bb1de",
+        "subjects_differ": true
+      },
+      "passed": true,
+      "stage": "online",
+      "support": "stock-oss",
+      "surface": "Keycloak pairwise subject protocol mapper"
+    },
+    {
+      "id": "R_RAW_OIDC_TOKEN",
+      "invariant": "I3",
+      "latency_ms": 160.594,
+      "observed": {
+        "audience_bound": true,
+        "birth_date_crossed_boundary": true,
+        "derived_predicate_crossed_boundary": false,
+        "route": "R"
+      },
+      "passed": true,
+      "stage": "online",
+      "support": "stock-oss",
+      "surface": "Keycloak OIDC direct grant and protocol mapper"
+    },
+    {
+      "id": "O_DERIVED_OIDC_TOKEN",
+      "invariant": "I2,I3,I4",
+      "latency_ms": 98.283,
+      "observed": {
+        "audience_bound": true,
+        "birth_date_crossed_boundary": false,
+        "holder_key_bound": false,
+        "predicate_value": true,
+        "route": "O"
+      },
+      "passed": true,
+      "stage": "online",
+      "support": "stock-oss",
+      "surface": "Keycloak OIDC direct grant and protocol mapper"
+    },
+    {
+      "id": "POLICY_ROUTE_PERMISSIONS",
+      "invariant": "I5,I6",
+      "observed": {
+        "model_id_hash": "b046e0d5284dc5bf5456430cf6daa0685528f8aa776e77dabc438a4a6a032fd9",
+        "route_permissions": {
+          "C": true,
+          "O": true,
+          "R": true
+        }
+      },
+      "passed": true,
+      "stage": "online",
+      "support": "stock-oss",
+      "surface": "OpenFGA v1 HTTP API"
+    },
+    {
+      "id": "BROKER_LOCAL_ID_AND_LINK",
+      "invariant": "I1,I8",
+      "latency_ms": 1079.92,
+      "observed": {
+        "b_token_sub_is_b_internal_id": true,
+        "external_link_equals_a_internal_id": false,
+        "external_link_hashes": [
+          "95464c1d76258dfa0c72a9f4d489b75233c03ddcc7f08735f8cdca4acbe8b3eb"
+        ],
+        "persistent_external_link_count": 1,
+        "region_ids_differ": true,
+        "stored_external_token": false
+      },
+      "passed": true,
+      "stage": "online",
+      "support": "stock-oss",
+      "surface": "Keycloak OIDC identity broker and Admin REST API"
+    },
+    {
+      "id": "C_KEYCLOAK_OID4VCI_ISSUANCE",
+      "invariant": "I1,I2,I3",
+      "latency_ms": 170.463,
+      "observed": {
+        "birth_date_present": false,
+        "format": "dc+sd-jwt",
+        "holder_binding_matches": true,
+        "issuer_subject_present": false,
+        "offer_grant": "pre-authorized_code",
+        "predicate_present": true,
+        "server_side_entitlement_provisioned": true,
+        "status_reference_present": false
+      },
+      "passed": true,
+      "stage": "online",
+      "support": "stock-oss-experimental",
+      "surface": "Keycloak 26.7.x experimental OpenID4VCI pre-authorized flow"
+    },
+    {
+      "id": "O_SOURCE_OUTAGE",
+      "invariant": "I4",
+      "observed": {
+        "online_derived_failed_closed": true
+      },
+      "passed": true,
+      "stage": "source-offline",
+      "support": "stock-oss",
+      "surface": "Keycloak OIDC token endpoint while Region A container is stopped"
+    },
+    {
+      "id": "C_SOURCE_OUTAGE_SUCCESS",
+      "invariant": "I2,I3,I4",
+      "latency_ms": 2.561,
+      "observed": {
+        "birth_date_present": false,
+        "disclosure_digests_verified": true,
+        "key_binding_verified": true,
+        "predicate_value": "true",
+        "source_container_available": false,
+        "source_requests_required": 0
+      },
+      "passed": true,
+      "stage": "source-offline",
+      "support": "minimal-python-verifier",
+      "surface": "cached Keycloak-issued SD-JWT VC plus minimal Python verifier"
+    },
+    {
+      "id": "C_NONCE_REPLAY",
+      "invariant": "I7",
+      "observed": {
+        "durable_nonce_store": "sqlite",
+        "first_presentation": "accepted",
+        "reason": "NONCE_REPLAYED",
+        "second_presentation": "rejected"
+      },
+      "passed": true,
+      "stage": "source-offline",
+      "support": "minimal-controller",
+      "surface": "Region B verifier nonce store"
+    },
+    {
+      "id": "C_HOLDER_KEY_SUBSTITUTION",
+      "invariant": "I2,I7",
+      "observed": {
+        "substitution_rejected": true
+      },
+      "passed": true,
+      "stage": "source-offline",
+      "support": "minimal-python-verifier",
+      "surface": "minimal Python verifier: SD-JWT VC cnf JWK and key-binding JWT"
+    },
+    {
+      "id": "C_EXPIRY_BOUNDARY",
+      "invariant": "I5",
+      "observed": {
+        "exp_present": true,
+        "expired_credential_rejected": true
+      },
+      "passed": true,
+      "stage": "source-offline",
+      "support": "minimal-python-verifier",
+      "surface": "minimal Python verifier: SD-JWT VC exp validation using cached issuer JWKS"
+    },
+    {
+      "id": "C_REVOCATION_NEGATIVE_CONTROL",
+      "invariant": "I5",
+      "observed": {
+        "reason": "NO_STATUS_REFERENCE",
+        "revoked_offline_credential_rejected": false,
+        "status_reference_present": false
+      },
+      "passed": false,
+      "stage": "source-offline",
+      "support": "unsupported-in-issued-artifact",
+      "surface": "Keycloak-issued SD-JWT VC status material"
+    },
+    {
+      "id": "C_STALE_POLICY_NEGATIVE_CONTROL",
+      "invariant": "I5,I6",
+      "observed": {
+        "cross-route_freshness_gate_supplied_by_keycloak": false,
+        "oss_policy_engine_supplies_version_id": true,
+        "stale_policy_rejected": true
+      },
+      "passed": true,
+      "stage": "source-offline",
+      "support": "minimal-controller",
+      "surface": "handoff gate comparing requested and cached OpenFGA authorization model IDs"
+    },
+    {
+      "id": "C_POLICY_SERVICE_OUTAGE",
+      "invariant": "I5,I6",
+      "observed": {
+        "cached_c_accepted": true,
+        "cached_policy_age_seconds": 4,
+        "cached_policy_max_age_seconds": 300,
+        "policy_service_unavailable": true,
+        "stock_openfga_offline_evaluation": false
+      },
+      "passed": true,
+      "stage": "source-and-policy-offline",
+      "support": "minimal-controller",
+      "surface": "bounded cached OpenFGA decision metadata"
+    },
+    {
+      "id": "R_SOURCE_POLICY_BYPASS",
+      "invariant": "I6",
+      "observed": {
+        "policy_allows_raw": false,
+        "raw_crossed_before_region_b_gate": true,
+        "reason": "SOURCE_DOES_NOT_CONSULT_ROUTE_POLICY",
+        "source_issued_raw_token": true
+      },
+      "passed": false,
+      "stage": "services-restored",
+      "support": "missing-source-enforcement",
+      "surface": "OpenFGA decision compared with unmodified Keycloak OIDC token endpoint"
+    },
+    {
+      "id": "C_ADMIN_REVOCATION_AFTER_ISSUANCE",
+      "invariant": "I5",
+      "observed": {
+        "cached_credential_still_verifies_cryptographically": true,
+        "delete_status": 204,
+        "issued_count": 1,
+        "list_status": 200,
+        "presentation_time_status_check_available": false,
+        "revoked": true
+      },
+      "passed": false,
+      "stage": "services-restored",
+      "support": "stock-oss-plus-minimal-python-verifier",
+      "surface": "Keycloak 26.7 user VC Admin REST API and minimal Python verifier"
+    }
+  ],
+  "publication_boundary": {
+    "no_keys_tokens_credentials_or_raw_logs": true,
+    "not_cross_region_deployment": true,
+    "not_legal_compliance_evidence": true,
+    "not_production_capacity_evidence": true
+  },
+  "registered_commit": "79a886f",
+  "route_summary": {
+    "C": "Keycloak OpenID4VCI holder-bound SD-JWT VC verified after Region A stop",
+    "O": "Keycloak OIDC access token containing only age_over_18",
+    "R": "Keycloak OIDC access token containing source birth_date"
+  }
+}

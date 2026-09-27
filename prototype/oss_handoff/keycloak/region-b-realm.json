@@ -1,0 +1,47 @@
+{
+  "realm": "region-b",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "rememberMe": false,
+  "clients": [
+    {
+      "clientId": "region-b-app",
+      "name": "Region B synthetic relying party",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "local-region-b-app-only",
+      "directAccessGrantsEnabled": false,
+      "standardFlowEnabled": true,
+      "protocol": "openid-connect",
+      "redirectUris": ["http://runner.invalid/callback"]
+    }
+  ],
+  "identityProviders": [
+    {
+      "alias": "region-a",
+      "displayName": "Region A",
+      "providerId": "oidc",
+      "enabled": true,
+      "trustEmail": false,
+      "storeToken": false,
+      "linkOnly": false,
+      "firstBrokerLoginFlowAlias": "first broker login",
+      "config": {
+        "authorizationUrl": "http://region-a:8080/realms/region-a/protocol/openid-connect/auth",
+        "tokenUrl": "http://region-a:8080/realms/region-a/protocol/openid-connect/token",
+        "userInfoUrl": "http://region-a:8080/realms/region-a/protocol/openid-connect/userinfo",
+        "jwksUrl": "http://region-a:8080/realms/region-a/protocol/openid-connect/certs",
+        "issuer": "http://region-a:8080/realms/region-a",
+        "clientId": "region-b-broker",
+        "clientSecret": "local-broker-only",
+        "defaultScope": "openid",
+        "useJwksUrl": "true",
+        "validateSignature": "true",
+        "syncMode": "FORCE",
+        "updateProfileFirstLoginMode": "off"
+      }
+    }
+  ]
+}

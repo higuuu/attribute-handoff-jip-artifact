@@ -1,0 +1,259 @@
+{
+  "realm": "region-a",
+  "enabled": true,
+  "sslRequired": "none",
+  "registrationAllowed": false,
+  "resetPasswordAllowed": false,
+  "rememberMe": false,
+  "verifiableCredentialsEnabled": true,
+  "attributes": {
+    "preAuthorizedCodeLifespanS": "300",
+    "vc.c-nonce-lifetime-seconds": "120"
+  },
+  "roles": {
+    "realm": [
+      {
+        "name": "credential-offer-create",
+        "description": "Synthetic experiment role for OID4VCI offer creation"
+      }
+    ]
+  },
+  "users": [
+    {
+      "id": "10000000-0000-4000-8000-000000001001",
+      "username": "region-a-user",
+      "firstName": "Synthetic",
+      "lastName": "Resident",
+      "email": "region-a-user@example.invalid",
+      "enabled": true,
+      "emailVerified": true,
+      "attributes": {
+        "birth_date": ["1990-01-01"],
+        "age_over_18": ["true"]
+      },
+      "realmRoles": ["credential-offer-create"],
+      "credentials": [
+        {
+          "type": "password",
+          "value": "local-user-only",
+          "temporary": false
+        }
+      ]
+    }
+  ],
+  "clients": [
+    {
+      "clientId": "region-b-raw",
+      "name": "Region B raw attribute route",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "local-raw-only",
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": false,
+      "protocol": "openid-connect",
+      "redirectUris": ["https://raw.region-b.example.invalid/callback"],
+      "protocolMappers": [
+        {
+          "name": "pairwise-sub-raw",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-sha256-pairwise-sub-mapper",
+          "consentRequired": false,
+          "config": {
+            "pairwiseSubAlgorithmSalt": "synthetic-raw-sector-salt"
+          }
+        },
+        {
+          "name": "birth-date-raw",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "birth_date",
+            "claim.name": "birth_date",
+            "jsonType.label": "String",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "region-b-service-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "region-b-service",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "region-b-derived",
+      "name": "Region B online-derived route",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "local-derived-only",
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": false,
+      "protocol": "openid-connect",
+      "redirectUris": ["https://derived.region-b.example.invalid/callback"],
+      "protocolMappers": [
+        {
+          "name": "pairwise-sub-derived",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-sha256-pairwise-sub-mapper",
+          "consentRequired": false,
+          "config": {
+            "pairwiseSubAlgorithmSalt": "synthetic-derived-sector-salt"
+          }
+        },
+        {
+          "name": "age-over-18-derived",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "age_over_18",
+            "claim.name": "age_over_18",
+            "jsonType.label": "boolean",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "region-b-service-audience",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-audience-mapper",
+          "consentRequired": false,
+          "config": {
+            "included.client.audience": "region-b-service",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "introspection.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "region-b-broker",
+      "name": "Region B identity broker",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "local-broker-only",
+      "directAccessGrantsEnabled": false,
+      "standardFlowEnabled": true,
+      "protocol": "openid-connect",
+      "redirectUris": ["http://region-b:8080/realms/region-b/broker/region-a/endpoint"],
+      "defaultClientScopes": ["profile", "email", "roles", "web-origins", "acr", "basic"],
+      "protocolMappers": [
+        {
+          "name": "pairwise-sub-broker",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-sha256-pairwise-sub-mapper",
+          "consentRequired": false,
+          "config": {
+            "pairwiseSubAlgorithmSalt": "synthetic-broker-sector-salt"
+          }
+        },
+        {
+          "name": "birth-date-broker",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "birth_date",
+            "claim.name": "birth_date",
+            "jsonType.label": "String",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        },
+        {
+          "name": "age-over-18-broker",
+          "protocol": "openid-connect",
+          "protocolMapper": "oidc-usermodel-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "user.attribute": "age_over_18",
+            "claim.name": "age_over_18",
+            "jsonType.label": "boolean",
+            "id.token.claim": "true",
+            "access.token.claim": "true",
+            "userinfo.token.claim": "true"
+          }
+        }
+      ]
+    },
+    {
+      "clientId": "regional-wallet",
+      "name": "Synthetic regional Wallet",
+      "enabled": true,
+      "publicClient": false,
+      "secret": "local-wallet-only",
+      "directAccessGrantsEnabled": true,
+      "standardFlowEnabled": true,
+      "protocol": "openid-connect",
+      "attributes": {
+        "oid4vci.enabled": "true"
+      },
+      "optionalClientScopes": ["RegionalEligibilityCredential"]
+    }
+  ],
+  "clientScopes": [
+    {
+      "name": "RegionalEligibilityCredential",
+      "protocol": "oid4vc",
+      "attributes": {
+        "include.in.token.scope": "true",
+        "vc.credential_configuration_id": "RegionalEligibilityCredential",
+        "vc.credential_identifier": "RegionalEligibilityCredential",
+        "vc.format": "dc+sd-jwt",
+        "vc.expiry_in_seconds": "120",
+        "vc.verifiable_credential_type": "https://credentials.example.invalid/regional-eligibility",
+        "vc.supported_credential_types": "regional_eligibility",
+        "vc.credential_contexts": "https://credentials.example.invalid/regional-eligibility",
+        "vc.cryptographic_binding_methods_supported": "jwk",
+        "vc.credential_signing_alg": "RS256",
+        "vc.display": "[{\"name\":\"Regional Eligibility\",\"locale\":\"en\"}]",
+        "vc.sd_jwt.number_of_decoys": "2",
+        "vc.credential_build_config.sd_jwt.visible_claims": "iat,nbf,exp,jti",
+        "vc.credential_build_config.hash_algorithm": "sha-256",
+        "vc.credential_build_config.token_jws_type": "dc+sd-jwt",
+        "vc.include_in_metadata": "true",
+        "vc.binding_required": "true",
+        "vc.binding_methods_supported": "jwk",
+        "vc.binding_required_proof_types": "jwt"
+      },
+      "protocolMappers": [
+        {
+          "name": "age-over-18-credential",
+          "protocol": "oid4vc",
+          "protocolMapper": "oid4vc-user-attribute-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "age_over_18",
+            "userAttribute": "age_over_18",
+            "vc.mandatory": "true",
+            "vc.display": "[{\"name\":\"Age over 18\",\"locale\":\"en\"}]"
+          }
+        },
+        {
+          "name": "issued-at",
+          "protocol": "oid4vc",
+          "protocolMapper": "oid4vc-issued-at-time-claim-mapper",
+          "consentRequired": false,
+          "config": {
+            "claim.name": "iat",
+            "truncateToTimeUnit": "SECONDS",
+            "valueSource": "COMPUTE"
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+services:
+  region-a:
+    command:
+      - start-dev
+      - --features=oid4vc-vci,oid4vc-vci-preauth-code,oid4vc-vci-rest-credential-offer
+      - --import-realm
+      - --hostname=http://127.0.0.1:18080
+      - --http-port=8080
+    ports:
+      - "127.0.0.1:18080:8080"
+    volumes:
+      - ./.runtime/two-host/region-a-realm.json:/opt/keycloak/data/import/region-a-realm.json:ro
+
+  policy:
+    ports:
+      - "127.0.0.1:18081:8080"

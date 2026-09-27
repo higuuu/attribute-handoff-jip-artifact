@@ -1,0 +1,80 @@
+{
+  "actual_keycloak_endpoint": true,
+  "all_expectations_passed": true,
+  "cases": [
+    {
+      "assertion_bytes": 414,
+      "assertion_fields": [
+        "age_over_18",
+        "aud",
+        "exp",
+        "iat",
+        "iss",
+        "sub"
+      ],
+      "case": "before_18th_birthday",
+      "expected": false,
+      "observed": false,
+      "pass": true,
+      "signature_valid": true
+    },
+    {
+      "assertion_bytes": 413,
+      "assertion_fields": [
+        "age_over_18",
+        "aud",
+        "exp",
+        "iat",
+        "iss",
+        "sub"
+      ],
+      "case": "on_18th_birthday",
+      "expected": true,
+      "observed": true,
+      "pass": true,
+      "signature_valid": true
+    },
+    {
+      "assertion_bytes": 413,
+      "assertion_fields": [
+        "age_over_18",
+        "aud",
+        "exp",
+        "iat",
+        "iss",
+        "sub"
+      ],
+      "case": "after_18th_birthday",
+      "expected": true,
+      "observed": true,
+      "pass": true,
+      "signature_valid": true
+    }
+  ],
+  "keycloak_version": "26.7.3",
+  "limits": [
+    "single-host-loopback",
+    "synthetic-DOB",
+    "not-geographic",
+    "not-all-path"
+  ],
+  "negative_controls": {
+    "future_date_rejected": true,
+    "invalid_date_rejected": true,
+    "leap_day_after": true,
+    "leap_day_before": true,
+    "missing_date_rejected": true,
+    "tampered_source_token_rejected": true,
+    "wrong_source_audience_rejected": true
+  },
+  "protocol_commit": "f41612334945e8529e6bd7f8aa7241d85de38891",
+  "realm_sha256": "b4f15e4fb2c9b8b789ffda42826469dc3410620840c86be2778effb180a3df8c",
+  "repository_head_at_run": "f41612334945e8529e6bd7f8aa7241d85de38891",
+  "source_files_sha256": {
+    "core.py": "b23b2b95026d57d886764155af99410566590f5bb5e6b419927450ced5467fef",
+    "realm.json": "b4f15e4fb2c9b8b789ffda42826469dc3410620840c86be2778effb180a3df8c",
+    "run.py": "2f9a1aacf3fe65938da99fcd88e5996888ff0c56ddeb1230681ea65a57f390e0",
+    "verifier.py": "c473d31094662e6f8ea35fd31966af7d932bbf3aa20529994a98de8b8f526405"
+  },
+  "study": "supplemental-local-O_live"
+}
