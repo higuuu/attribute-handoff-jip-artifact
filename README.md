@@ -55,7 +55,7 @@ source commits `787d127862f7638e004795037034c0e5026b79ff` (protocol) and
 output SHA-256 is
 `42af3d837971c96f9c4c0bac70e7a0295fb89c791c8b273606c3ef4436aafc32`.
 The result files contain sanitized client records and PEP events, not tokens
-or raw source attributes. This new run was on one Mini, not the Air.
+or raw source attributes. This new run used one physical host, not two.
 
 ## Verify retained results without running the services
 
@@ -126,8 +126,8 @@ all-path non-bypassability, independent reproduction, geographic separation,
 legal compliance, and presentation-time credential status were not established.
 Request-time predicate derivation was first demonstrated in a same-host,
 separate-process supplement and then integrated with a same-host PEP using
-actual Keycloak/OpenFGA endpoints. It has **not** been run on the Air-side
-two-host enforced path. The integrated assertion is request-nonce bound, but
+actual Keycloak/OpenFGA endpoints. It has **not** been run on a two-host
+enforced path. The integrated assertion is request-nonce bound, but
 no global replay database or all-path non-bypassability was demonstrated.
 Latency measurements are descriptive
 for this small sample and are not performance benchmarks.

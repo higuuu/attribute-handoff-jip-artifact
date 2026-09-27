@@ -1,7 +1,7 @@
 # Integrated request-time age handoff: fixed local run
 
-Status: **single physical host functional integration**; not an Air-side
-two-host run, geographic deployment, or independent reproduction.
+Status: **single physical host functional integration**; not a two-host run,
+geographic deployment, or independent reproduction.
 
 - Prospective protocol committed before implementation: `787d127862f7638e004795037034c0e5026b79ff`.
 - Implementation committed before the registered 10-repetition run:
@@ -11,7 +11,7 @@ two-host run, geographic deployment, or independent reproduction.
   `c098d9ec8612263e9d08d7df50522b838de284644519ae6d9821766d82c9fa36`.
 - OpenFGA 1.18.1 used the same model ID across baseline and enforcement.
   Only PEP enforcement mode changed. Keycloak/OpenFGA and the PEP remained on
-  Mini loopback; the destination client also ran locally for this run.
+  source-host loopback; the destination client also ran locally for this run.
 
 | Case | Observe only | Enforce | Destination disclosure |
 | --- | --- | --- | --- |
