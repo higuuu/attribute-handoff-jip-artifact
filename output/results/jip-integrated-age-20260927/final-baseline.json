@@ -1,0 +1,787 @@
+{
+  "adapter_jwk_sha256": "87a0008bb72487756c1ab243a82dbb2c7afad87acfc443513d64f432ceab03cc",
+  "all_expectations_passed": true,
+  "claim_boundary": {
+    "all_path_enforcement": false,
+    "credential_status": false,
+    "geographic_or_legal_separation": false,
+    "latency_is_descriptive": true,
+    "same_author": true
+  },
+  "client_host_sha256": "d850f424bcff1576ecc5f62562c3d1a293d054cd285be21b6bfe5e1ccd2f79cf",
+  "controls": {
+    "tampered_assertion_rejected": true,
+    "wrong_nonce_rejected": true
+  },
+  "direct_source_probe": null,
+  "enforcement_mode": "observe-only",
+  "environment": {
+    "machine": "arm64",
+    "python": "3.10.5",
+    "system": "Darwin"
+  },
+  "experiment": "integrated-live-age-handoff",
+  "implementation_commit": "3275dd33ccb13334cdc944e745f9c9e9d5ef52e1",
+  "model_id_sha256": "663917bcc99c6d9cc1e2b69f07a6370e3207de62768c92a83529a5d4cf554fa4",
+  "parameters": {
+    "repetitions": 10,
+    "synthetic_data_only": true
+  },
+  "phase": "baseline",
+  "realm_sha256": "c098d9ec8612263e9d08d7df50522b838de284644519ae6d9821766d82c9fa36",
+  "records": [
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 71.054,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 1,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:001:0528e933c285403589c845691a8a1714",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 34.694,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 1,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:001:13588effdc2d536222ad12049f7381cb",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {
+        "tampered_assertion_rejected": true,
+        "wrong_nonce_rejected": true
+      },
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 31.771,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 1,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:001:30a521d615dcae93f49f3924e56939f2",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 31.676,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 2,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:002:a0cf9b9722401760e33f06a3dba10794",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 31.118,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 2,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:002:271f31ec7b5e4b6bb6376e1d08752591",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 33.262,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 2,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:002:98509d66d55ec7bc0406342ffc5b65a7",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 34.838,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 3,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:003:f314e496079c631e88cd0bf16f9b8c36",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 31.974,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 3,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:003:ec2a6d6ea848b54bd5c4aa2fe64a76fe",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 31.759,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 3,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:003:d2b6a82155b821fbb670b3eacb455f04",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 30.634,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 4,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:004:79705d42e1dfc1c6fa513eb07ab986cf",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 31.758,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 4,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:004:ac4b16912072fffbdfa971e5cbabe868",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 32.974,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 4,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:004:09e364fd9c7d839132ec8133580eb2b2",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 30.399,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 5,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:005:cfdae22e767ecd49db12a358cc34773e",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 31.703,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 5,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:005:e7a677b5675383b3e40bc0e8f362a39f",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 29.636,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 5,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:005:6d9e416093d92714be51c38a06d6ac06",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 30.212,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 6,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:006:1abd5666450915eaffe9fe575d0fcb17",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 29.72,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 6,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:006:c3fd660da6206fb9e9ac02f37c47eec3",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 32.419,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 6,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:006:ad655ef7ff7f37e306dab356b055c185",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 29.681,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 7,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:007:ff2697a6f536537f3d36e26f46d34fbe",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 40.114,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 7,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:007:ae9abcf404c7f786e3f8dab9ffab4ef8",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 32.452,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 7,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:007:534d7619b335021af428b71faef128cc",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 30.318,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 8,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:008:b553b252b41379611e56d8a4babe1436",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 29.434,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 8,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:008:54a3b08b699ea8bf26058ea7c6588fa0",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 31.391,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 8,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:008:ecb50221dcf0be68d1a19d4b8866c7a8",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 30.902,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 9,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:009:d62c84c32d029fd692912c74f1022a3d",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 32.671,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 9,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:009:79ab87457c28751fcd722afc81ab872e",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 30.135,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 9,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:009:0db2823bc75b96969ad2a3ea1aa3c487",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    },
+    {
+      "age_over_18": null,
+      "case": "R_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "elapsed_ms": 30.331,
+      "evidence_bytes": 1158,
+      "evidence_type": "oidc_access_token",
+      "expected": true,
+      "reason": null,
+      "repetition": 10,
+      "request_bytes": 202,
+      "request_id": "baseline:R_CURRENT:010:5afa1fa2065846107f9d29ea618b2f43",
+      "response_bytes": 1474,
+      "route": "R",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "ROUTE_DENIED_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_STALE",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 29.303,
+      "evidence_bytes": 518,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 10,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_STALE:010:529dc47e981b47280c0dbdfc4ed09142",
+      "response_bytes": 849,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": [
+        "STALE_POLICY_OBSERVED"
+      ]
+    },
+    {
+      "age_over_18": true,
+      "case": "O_LIVE_CURRENT",
+      "controls": {},
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "elapsed_ms": 29.408,
+      "evidence_bytes": 520,
+      "evidence_type": "age_predicate_assertion",
+      "expected": true,
+      "reason": null,
+      "repetition": 10,
+      "request_bytes": 212,
+      "request_id": "baseline:O_LIVE_CURRENT:010:c46c352f3d2bcd498e56ecae89ff1230",
+      "response_bytes": 828,
+      "route": "O_live",
+      "signature_verified": true,
+      "status": 200,
+      "transport_error_class": null,
+      "warnings": []
+    }
+  ],
+  "schema_version": 1,
+  "source_host_sha256": "d850f424bcff1576ecc5f62562c3d1a293d054cd285be21b6bfe5e1ccd2f79cf",
+  "summary": {
+    "O_LIVE_CURRENT": {
+      "count": 10,
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "evidence_bytes_p50": 520,
+      "expectations_passed": true,
+      "latency_ms": {
+        "p50": 31.765,
+        "p95": 33.132
+      },
+      "status_counts": {
+        "200": 10
+      }
+    },
+    "O_LIVE_STALE": {
+      "count": 10,
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "evidence_bytes_p50": 518,
+      "expectations_passed": true,
+      "latency_ms": {
+        "p50": 31.73,
+        "p95": 37.675
+      },
+      "status_counts": {
+        "200": 10
+      }
+    },
+    "R_CURRENT": {
+      "count": 10,
+      "disclosure_fields": [
+        "birth_date"
+      ],
+      "evidence_bytes_p50": 1158,
+      "expectations_passed": true,
+      "latency_ms": {
+        "p50": 30.517,
+        "p95": 54.757
+      },
+      "status_counts": {
+        "200": 10
+      }
+    }
+  },
+  "two_physical_hosts_claimed": false
+}

@@ -64,7 +64,7 @@ def evaluate_handoff(
     policy_check: PolicyCheck,
     issue_evidence: EvidenceIssue,
 ) -> PEPResult:
-    """Evaluate one R/O* request without ever recording the returned token."""
+    """Evaluate one online handoff without recording returned evidence."""
 
     started = time.perf_counter()
     request_id = str(request_value.get("request_id", ""))
@@ -88,7 +88,7 @@ def evaluate_handoff(
             body={"error": "INVALID_REQUEST_ID"},
             request_bytes=request_bytes,
         )
-    if route not in {"R", "O*"}:
+    if route not in {"R", "O*", "O_live"}:
         return _finish(
             started=started,
             status=400,
@@ -153,7 +153,7 @@ def evaluate_handoff(
         warnings.append("STALE_POLICY_OBSERVED")
 
     try:
-        allowed, policy_latency_ms = policy_check(config, "O" if route == "O*" else route)
+        allowed, policy_latency_ms = policy_check(config, "O" if route in {"O*", "O_live"} else route)
     except Exception:
         return _finish(
             started=started,
@@ -207,7 +207,7 @@ def evaluate_handoff(
         "request_id": request_id,
         "decision": "ISSUED",
         "route": route,
-        "evidence_type": "oidc_access_token",
+        "evidence_type": "age_predicate_assertion" if route == "O_live" else "oidc_access_token",
         "evidence": evidence,
         "policy": {
             "allowed": allowed,

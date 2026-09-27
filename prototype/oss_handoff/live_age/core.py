@@ -48,6 +48,39 @@ def issue_for_verified_source_token(
 ) -> str:
     """Validate the raw source JWT, then emit only a signed predicate."""
 
+    pseudonym, predicate = derive_verified_source_predicate(
+        source_token,
+        source_jwks,
+        source_issuer=source_issuer,
+        subject_salt=subject_salt,
+        as_of=as_of,
+        issued_at=issued_at,
+    )
+    return sign_es256(
+        {"alg": "ES256", "typ": "JWT", "kid": "live-age-local"},
+        {
+            "iss": ASSERTION_ISSUER,
+            "aud": DESTINATION_AUDIENCE,
+            "sub": pseudonym,
+            "age_over_18": predicate,
+            "iat": issued_at,
+            "exp": issued_at + 120,
+        },
+        signing_key,
+    )
+
+
+def derive_verified_source_predicate(
+    source_token: str,
+    source_jwks: dict[str, Any],
+    *,
+    source_issuer: str,
+    subject_salt: bytes,
+    as_of: date,
+    issued_at: int,
+) -> tuple[str, bool]:
+    """Keep the DOB inside the adapter and return only pseudonym and predicate."""
+
     if len(subject_salt) < 32:
         raise ValueError("subject salt too short")
     claims = verify_jwt(
@@ -68,18 +101,7 @@ def issue_for_verified_source_token(
         raise ValueError("source token missing subject")
     predicate = over_18(claims.get("birth_date"), as_of)
     pseudonym = hmac.new(subject_salt, subject.encode(), hashlib.sha256).hexdigest()
-    return sign_es256(
-        {"alg": "ES256", "typ": "JWT", "kid": "live-age-local"},
-        {
-            "iss": ASSERTION_ISSUER,
-            "aud": DESTINATION_AUDIENCE,
-            "sub": pseudonym,
-            "age_over_18": predicate,
-            "iat": issued_at,
-            "exp": issued_at + 120,
-        },
-        signing_key,
-    )
+    return pseudonym, predicate
 
 
 def verify_destination_assertion(

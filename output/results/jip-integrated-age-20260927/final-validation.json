@@ -1,0 +1,16 @@
+{
+  "all_passed": true,
+  "baseline_records": 30,
+  "checks_passed": 76,
+  "checks_total": 76,
+  "enforced_records": 30,
+  "event_count": 60,
+  "experiment": "integrated-live-age-handoff-validation",
+  "failed_checks": [],
+  "input_sha256": {
+    "baseline": "3a11a8046619f2c9c43f93db2feb4dd419205c5a86212998a756c5dddc8e82f8",
+    "boundary": "bc3534849d9a9fff5cf0bfc1b7f8f17aafb0311ad657b96f67d14ce9035d5998",
+    "enforced": "932b8d06489c91803e784fcc2a7f19830c783367191a7ba7e18160d06883a739",
+    "events": "b9632765f684691ad399f8fde64418517e924142e54d7b52e5fe46de47547bc4"
+  }
+}

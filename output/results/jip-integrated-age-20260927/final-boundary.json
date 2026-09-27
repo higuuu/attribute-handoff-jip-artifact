@@ -1,0 +1,39 @@
+{
+  "actual_keycloak_source_token_used": true,
+  "all_expectations_passed": true,
+  "cases": [
+    {
+      "case": "before_18th_birthday",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "expected": false,
+      "observed": false,
+      "pass": true,
+      "signature_verified": true
+    },
+    {
+      "case": "on_18th_birthday",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "expected": true,
+      "observed": true,
+      "pass": true,
+      "signature_verified": true
+    },
+    {
+      "case": "after_18th_birthday",
+      "disclosure_fields": [
+        "age_over_18"
+      ],
+      "expected": true,
+      "observed": true,
+      "pass": true,
+      "signature_verified": true
+    }
+  ],
+  "experiment": "integrated-live-age-fixed-calendar-control",
+  "realm_sha256": "c098d9ec8612263e9d08d7df50522b838de284644519ae6d9821766d82c9fa36",
+  "same_host_adapter_control_not_remote_pep": true
+}

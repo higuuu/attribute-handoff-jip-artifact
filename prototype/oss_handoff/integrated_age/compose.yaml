@@ -1,0 +1,22 @@
+name: jip-integrated-age
+services:
+  source:
+    image: quay.io/keycloak/keycloak:26.7.3
+    command: ["start-dev", "--import-realm"]
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: synthetic-admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: synthetic-admin-local-only
+      JAVA_OPTS_KC_HEAP: -Xms256m -Xmx768m
+    volumes:
+      - ../.runtime/integrated-age/realm.json:/opt/keycloak/data/import/live-age-realm.json:ro
+    ports:
+      - "127.0.0.1:18880:8080"
+    mem_limit: 1024m
+    cpus: 1.5
+  policy:
+    image: openfga/openfga:v1.18.1
+    command: ["run", "--playground-enabled=false"]
+    ports:
+      - "127.0.0.1:18881:8080"
+    mem_limit: 256m
+    cpus: 0.5
